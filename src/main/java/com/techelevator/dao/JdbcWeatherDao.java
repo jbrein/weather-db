@@ -18,11 +18,18 @@ public class JdbcWeatherDao implements WeatherDao{
 
     @Override
     public Weather createWeather(Weather weather, User user, LatLon latLon) {
-        String sql = "INSERT INTO weather (user_id, zipcode, main, description, temperature) " +
-                "VALUES (?, ?, ?, ?, ?)";
+        String sql = "";
+        if(getWeatherByUser(user) == null) {
+            sql = "INSERT INTO weather (user_id, zipcode, main, description, temperature) " +
+                    "VALUES (?, ?, ?, ?, ?)";
+            template.update(sql, user.getUserId(), latLon.getZip(), weather.getMain(), weather.getDescription(),
+                    weather.getTemp());
+        } else {
+            sql = "UPDATE weather SET user_id = ? , zipcode = ?, main = ?, description = ?, temperature = ? " +
+                    "WHERE user_id = ?";
+            template.update(sql, user.getUserId(), latLon.getZip(), weather.getMain(), weather.getDescription(),
+                    weather.getTemp(), user.getUserId());}
 
-        template.update(sql, user.getUserId(), latLon.getZip(), weather.getMain(), weather.getDescription(),
-                weather.getTemp());
         return getWeatherByUser(user);
     }
 

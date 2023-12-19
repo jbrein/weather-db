@@ -66,8 +66,8 @@ public class UserWeatherCli {
             } else if ("s".equalsIgnoreCase(option)) {
                 showUsers();
             } else if ("l".equalsIgnoreCase(option)) {
+                System.out.println();
                 loginUser();
-                showWeatherMenu();
             } else if ("q".equalsIgnoreCase(option)) {
                 System.out.println("Thanks for using the User Weather App!");
                 break;
@@ -83,7 +83,9 @@ public class UserWeatherCli {
             printWeatherMenu();
             String option = askPrompt();
 
-            if ("a".equalsIgnoreCase(option)) {
+            if ("r".equalsIgnoreCase(option)) {
+                showUsers();
+            } else if ("a".equalsIgnoreCase(option)) {
                 zipcode = addZipCode();
             } else if ("s".equalsIgnoreCase(option)) {
                 getWeather(zipcode);
@@ -104,7 +106,6 @@ public class UserWeatherCli {
             System.out.println("user is " + loggedInUser.getUserId() + " and zip is " + zipcode);
             LatLon latLon = service.getLatLong(zipcode + "");
             Weather weather = service.getWeather(latLon);
-//            System.out.println(weather);
             Weather weatherFromDB = weatherDao.createWeather(weather, loggedInUser, latLon);
             System.out.println("Today's weather: " + weatherFromDB.getDescription());
             System.out.println("Today's temperature: " + weatherFromDB.getTemp());
@@ -113,6 +114,7 @@ public class UserWeatherCli {
 
     private void printWeatherMenu(){
         System.out.println("Logged in user Menu");
+        System.out.println("(R)eport users");
         System.out.println("(A)dd a zipcode");
         System.out.println("(S)how weather");
         System.out.println("(Q)uit");
@@ -167,6 +169,7 @@ public class UserWeatherCli {
             loggedInUser.setUserId(user.getUserId());
             System.out.println("Welcome " + username + "!");
             System.out.println();
+            showWeatherMenu();
         } else {
             System.out.println("That login is not valid, please try again.");
             System.out.println();

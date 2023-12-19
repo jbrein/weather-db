@@ -13,7 +13,6 @@ public class WeatherService {
     private final String API_KEY = "Your API Key here!";
 
     public LatLon getLatLong(String zip){
-        System.out.println(API_KEY);
         String url = API_URL + "geo/1.0/zip?zip=" + zip + "&appid=" + API_KEY;
         return template.getForObject(url, LatLon.class);
 
