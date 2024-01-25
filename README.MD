@@ -4,7 +4,7 @@ results inside a database. The application will update tables so only the latest
 Authentication of the user is required. 
 ## Note
 The application uses a constant called **API_KEY** inside the weather services class within the services package. 
-Currently it is set to *"Your API Key here!"*. To have the application launch successfully, you must visit 
+Currently it is set to *"Your API Key here!"*. To have the application execute successfully, you must visit 
 https://home.openweathermap.org/users/sign_up to get a free api key and replace the contents of the constant with your 
 own.
 ## Instructions
