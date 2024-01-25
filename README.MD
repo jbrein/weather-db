@@ -1,7 +1,7 @@
 # Weather Database w/ CLI
 This application was constructed with Java using RestTemplate to consume the openweathermap.org API and store the latest
 results inside a database. The application will update tables so only the latest query per user will be stored. 
-Authentication of the user is required. 
+Authentication of the user is required. Starter code is from the Tech Elevator Capstone project. 
 ## Note
 The application uses a constant called **API_KEY** inside the weather services class within the services package. 
 Currently it is set to *"Your API Key here!"*. To have the application execute successfully, you must visit 
