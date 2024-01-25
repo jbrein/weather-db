@@ -3,7 +3,7 @@ This application was constructed with Java using RestTemplate to consume the ope
 results inside a database. The application will update tables so only the latest query per user will be stored. 
 Authentication of the user is required. 
 ## Note
-The application uses a constant called **API_KEY** inside the weather services clas within the services package. 
+The application uses a constant called **API_KEY** inside the weather services class within the services package. 
 Currently it is set to *"Your API Key here!"*. To have the application launch successfully, you must visit 
 https://home.openweathermap.org/users/sign_up to get a free api key and replace the contents of the constant with your 
 own.
